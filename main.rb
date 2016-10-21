@@ -1,11 +1,9 @@
 require "http"
 require "json"
 require 'colorize'
+require 'yaml'
 
-# apiKey = 'trnsl.1.1.20161019T122138Z.d4647318a3c3e16b.83ecebb28cc8c700faa31b58f632b63304e2bf08' # vesic.dusan
-# apiKey = 'trnsl.1.1.20161021T082649Z.2c580cbfb6e38e41.1cac476ae2aacbb9b1b1ed18b3c33cf55083daa5' # vesic.dusan.1
-apiKey = 'trnsl.1.1.20161021T130314Z.cea0d4219a187b0e.be481b4706bd249f335d9ad9ae0ae410ebbf425f';
-# apiKey = 'trnsl.1.1.20161019T122138Z.d4647318a3c3e16b.83ecebb28cc8c700faa31b58f632b63304e2bf08fake' # fake key
+apiKey = YAML.load_file("config.yml")["apiKey"]
 
 input_file = ARGV[0]
 output_file = ARGV[1]
