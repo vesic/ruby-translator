@@ -4,12 +4,13 @@ require 'colorize'
 
 # apiKey = 'trnsl.1.1.20161019T122138Z.d4647318a3c3e16b.83ecebb28cc8c700faa31b58f632b63304e2bf08' # vesic.dusan
 apiKey = 'trnsl.1.1.20161021T082649Z.2c580cbfb6e38e41.1cac476ae2aacbb9b1b1ed18b3c33cf55083daa5' # vesic.dusan.1
-# apiKey = 'trnsl.1.1.20161019T122138Z.d4647318a3c3e16b.83ecebb28cc8c700faa31b58f632b63304e2bf08fake' #fake
+# apiKey = 'trnsl.1.1.20161019T122138Z.d4647318a3c3e16b.83ecebb28cc8c700faa31b58f632b63304e2bf08fake' # fake key
 
-output_file = 'out2.txt';
+input_file = ARGV[0]
+output_file = ARGV[1]
 
 en_words = [];
-File.open('en-02.txt').each do |row|
+File.open(input_file).each do |row|
   en_words << row.strip
 end
 
@@ -20,7 +21,7 @@ en_words.each_slice(100) do |chunk|
   text = ""
   chunk.each { |el| text << "&text=" << el }
   startTime = Time.now
-  res = HTTP.get("https://translate.yandex.net/api/v1.5/tr.json/translate?key=#{apiKey}#{text}&lang=en-fin")
+  res = HTTP.get("https://translate.yandex.net/api/v1.5/tr.json/translate?key=#{apiKey}#{text}&lang=en-fi")
   res = JSON.parse(res);
   code = res["code"];
   if code.equal? 200

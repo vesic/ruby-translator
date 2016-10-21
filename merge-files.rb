@@ -1,7 +1,11 @@
 require 'colorize'
 
-files = ['out1.txt', 'out2.txt']
-output_file = 'combined.txt'
+file1 = ARGV[0]
+file2 = ARGV[1]
+output_file = ARGV[2]
+
+files = [file1, file2]
+
 combined = []
 
 files.each do |file|
